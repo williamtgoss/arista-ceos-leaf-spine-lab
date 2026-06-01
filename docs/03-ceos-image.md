@@ -47,8 +47,9 @@ Arista provides vEOS (virtualized) and cEOS (containerized) images to non-custom
 You can import the image directly from its Windows path in your WSL2 terminal — no need to copy the file.
 
 Open your **Ubuntu terminal** and run:
-
-docker import /mnt/c/"location where you saved you cEOS-lab-4.35.4M.tar.xz" ceos:4.35.4M
+```
+docker import /mnt/c/**location where you saved you cEOS-lab-4.35.4M.tar.xz** ceos:4.35.4M
+```
 
 Explanation:
 - `/mnt/c/` is how WSL2 accesses `C:\` on Windows
