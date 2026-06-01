@@ -81,7 +81,11 @@ You should see:
 
 ```
 Hello from Docker!
-This message shows that your installation appears to be working correctly.
+This message shows that your installation appears to be working correctly. 
+
+To generate this message, Docker took ...
+
+-Message truncated-
 ```
 
 If you receive a permission error, try:
@@ -97,6 +101,9 @@ Then close and reopen the Ubuntu terminal and retry.
 ## Continue to 02-Containerlab-install.md
 
 
+Next: [Install ContainerLab](02-containerlab-install.md)
+
+---
 
 ## Troubleshooting
 
@@ -109,4 +116,3 @@ Then close and reopen the Ubuntu terminal and retry.
 
 ---
 
-Next: [Install ContainerLab](02-containerlab-install.md)
