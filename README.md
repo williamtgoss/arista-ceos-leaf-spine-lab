@@ -86,7 +86,7 @@ Follow these guides in order:
 
 ```bash
 # In your WSL2 Ubuntu terminal
-git clone <this-repo-url> arista-leaf-spine
+git clone https://github.com/williamtgoss/arista-ceos-leaf-spine-lab.git arista-leaf-spine
 cd arista-leaf-spine
 
 # Deploy the lab

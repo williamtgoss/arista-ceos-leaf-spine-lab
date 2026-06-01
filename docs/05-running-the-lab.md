@@ -9,7 +9,7 @@ With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to 
 Open your **Ubuntu terminal** and clone the repo into your WSL2 home directory:
 
 ```bash
-git clone <this-repo-url> arista-leaf-spine
+git clone https://github.com/williamtgoss/arista-ceos-leaf-spine-lab.git arista-leaf-spine
 cd arista-leaf-spine
 ```
 
