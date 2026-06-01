@@ -8,6 +8,8 @@ ContainerLab runs on Linux. On Windows, we use WSL2 (Windows Subsystem for Linux
 
 Open **Task Manager** → **Performance** → **CPU**. Confirm **Virtualization: Enabled** appears at the bottom right. If it shows Disabled, reboot and enable it in your BIOS/UEFI firmware settings (look for "Intel VT-x" or "AMD-V / SVM").
 
+![systemresources](/images/Step-1-virtualization.png)
+
 ---
 
 ## 2. Install WSL2

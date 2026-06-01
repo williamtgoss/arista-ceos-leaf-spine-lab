@@ -67,7 +67,9 @@ sudo containerlab version
 docker ps
 ```
 
-Both commands should return without errors.
+Both commands should return without errors and appear as shown below.
+
+![DockerandContainerlab](/images/DockerContainerLab-validate.png)
 
 If `docker ps` fails, revisit [Step 1 — WSL integration setup](01-wsl-docker.md#4-enable-wsl-integration-for-ubuntu).
 
