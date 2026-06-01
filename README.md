@@ -43,6 +43,14 @@ Individual device configuration "startup-config" files can be found in the `conf
 | leaf1a ↔ leaf1b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf1a:.1 / leaf1b:.2 |
 | leaf2a ↔ leaf2b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf2a:.1 / leaf2b:.2 |
 
+
+## Default Credentials
+
+| Username | Password |
+|----------|----------|
+| admin    | admin    |
+
+
 ---
 # Windows Install Guide
 
@@ -87,19 +95,13 @@ docker exec -it clab-arista-leaf-spine-leaf1a Cli -c "show mlag"
 # Destroy the lab when done
 sudo containerlab destroy -t lab.clab.yaml
 ```
+---
 
 # MacOS Install Guide
  more details to come.
 
 ---
 
-## Default Credentials
-
-| Username | Password |
-|----------|----------|
-| admin    | admin    |
-
----
 
 ## Repository Structure
 
