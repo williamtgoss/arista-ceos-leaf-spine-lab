@@ -6,17 +6,19 @@ Arista's cEOS-lab image is a containerized version of EOS. It requires a free Ar
 
 ## 1. Create an Arista Account
 
-If you do not already have one:
+If you or your organization already has an Arista support contract, use your existing account. If you do not have one:
 
 1. Go to **https://www.arista.com/en/user-registration**
 2. Fill in your details and submit the registration form
-3. Verify your email address
+3. Verify your email address (Generic email domains like Hotmail.com, Yahoo.com or others are restricted)
 
-If your organization already has an Arista support contract, contact your account team to have your account associated with the contract for full software access.
+
 
 ---
 
 ## 2. Download the cEOS Image
+
+Arista provides vEOS (virtualized) and cEOS (containerized) images to non-customers with a registered arista.com account. If you are an existing Arista customer, you will have access to all licensed software through your organizations account in addition to the vEOS and cEOS images.
 
 1. Log in at **https://www.arista.com/en/support/software-download**
 2. In the left navigation, select **EOS** → **Active Releases** → **4.35** → **EOS-4.35.4M**

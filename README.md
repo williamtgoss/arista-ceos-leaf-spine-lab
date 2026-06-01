@@ -1,6 +1,6 @@
 # Running a local ContainerLab environment - Arista cEOS L3 Leaf-Spine Lab
 
-A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-leaf-pair (MLAG) architecture, with step-by-step instruction for both Windows and MacOS.
+A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-leaf-pair (MLAG) architecture, with step-by-step instructions for both Windows and macOS.
 
 ---
 
@@ -105,8 +105,8 @@ sudo containerlab destroy -t lab.clab.yaml
 ```
 ---
 
-# MacOS Install Guide
- more details to come.
+# macOS Install Guide
+More details to come.
 
 ---
 
@@ -122,7 +122,9 @@ sudo containerlab destroy -t lab.clab.yaml
 │   ├── leaf1a/startup-config
 │   ├── leaf1b/startup-config
 │   ├── leaf2a/startup-config
-│   └── leaf2b/startup-config
+│   ├── leaf2b/startup-config
+│   ├── host1/startup.sh
+│   └── host2/startup.sh
 └── docs/
     ├── 01-wsl-docker.md
     ├── 02-containerlab-install.md

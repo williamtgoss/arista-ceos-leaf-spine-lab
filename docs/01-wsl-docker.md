@@ -12,10 +12,10 @@ Open **Task Manager** → **Performance** → **CPU**. Confirm **Virtualization:
 
 ## 2. Install WSL2
 
-By default, WSL will install the latest LTS image of Ubuntu. If you want to install a different distro, all support distros can be listed by entering 
+By default, WSL will install the latest LTS version of Ubuntu. If you want to install a different distro, all supported distros can be listed by running:
 
 ```powershell
-wsl -- list --online
+wsl --list --online
 ```
 
 Open **PowerShell as Administrator** (right-click Start → Windows Terminal (Admin)) and run:
@@ -30,10 +30,9 @@ This command:
 - Sets WSL2 as the default version
 - Installs Ubuntu (latest LTS) as the default distribution
 
-* Restart your computer, if prompted.
+Restart your computer when prompted.
 
-*** Setting up Username and password for your WSL account ***
-Ubuntu will open automatically and ask you to create a UNIX username and password. Choose a username and password — these will be your credentials inside WSL.
+**Setting up your WSL username and password:** After restarting, Ubuntu will open automatically and ask you to create a UNIX username and password. These will be your credentials inside WSL.
 
 ### Verify WSL2 is running
 
@@ -61,7 +60,7 @@ wsl --set-default-version 2
 
 ## 3. Install Docker on WSL 
 
-Below is a simplifed one line bash script to install doxker on your WSL linux VM
+Below is a simplified one-line bash script to install Docker on your WSL Linux VM:
 ```
 bash -c "$(curl https://raw.githubusercontent.com/williamtgoss/arista-ceos-leaf-spine-lab/refs/heads/master/docs/Scripts/installdocker.sh)"
 ```
