@@ -1,0 +1,8 @@
+# All text files use LF — these configs and scripts run in WSL2/Linux
+* text=auto eol=lf
+
+# Explicitly binary
+*.tar     binary
+*.tar.xz  binary
+*.png     binary
+*.jpg     binary

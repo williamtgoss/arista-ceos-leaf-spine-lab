@@ -1,0 +1,64 @@
+! ============================================================
+! spine2 — BGP AS 65002
+! P2P underlay links (/31):
+!   Ethernet1 -> leaf1a  10.0.0.8/31   (spine2:.8   leaf1a:.9)
+!   Ethernet2 -> leaf1b  10.0.0.10/31  (spine2:.10  leaf1b:.11)
+!   Ethernet3 -> leaf2a  10.0.0.12/31  (spine2:.12  leaf2a:.13)
+!   Ethernet4 -> leaf2b  10.0.0.14/31  (spine2:.14  leaf2b:.15)
+!   Loopback0            10.255.0.2/32
+! ============================================================
+
+service routing protocols model multi-agent
+
+hostname spine2
+
+username admin privilege 15 role network-admin secret admin
+aaa authorization exec default local
+
+ip routing
+
+interface Loopback0
+   ip address 10.255.0.2/32
+
+interface Ethernet1
+   description P2P_leaf1a
+   no switchport
+   ip address 10.0.0.8/31
+
+interface Ethernet2
+   description P2P_leaf1b
+   no switchport
+   ip address 10.0.0.10/31
+
+interface Ethernet3
+   description P2P_leaf2a
+   no switchport
+   ip address 10.0.0.12/31
+
+interface Ethernet4
+   description P2P_leaf2b
+   no switchport
+   ip address 10.0.0.14/31
+
+router bgp 65002
+   router-id 10.255.0.2
+   no bgp default ipv4-unicast
+   maximum-paths 4 ecmp 4
+   neighbor LEAVES peer group
+   neighbor LEAVES send-community
+   neighbor LEAVES maximum-routes 12000
+   neighbor 10.0.0.9 peer group LEAVES
+   neighbor 10.0.0.9 remote-as 65011
+   neighbor 10.0.0.9 description leaf1a
+   neighbor 10.0.0.11 peer group LEAVES
+   neighbor 10.0.0.11 remote-as 65011
+   neighbor 10.0.0.11 description leaf1b
+   neighbor 10.0.0.13 peer group LEAVES
+   neighbor 10.0.0.13 remote-as 65012
+   neighbor 10.0.0.13 description leaf2a
+   neighbor 10.0.0.15 peer group LEAVES
+   neighbor 10.0.0.15 remote-as 65012
+   neighbor 10.0.0.15 description leaf2b
+   address-family ipv4
+      neighbor LEAVES activate
+      network 10.255.0.2/32

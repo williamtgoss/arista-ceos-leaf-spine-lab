@@ -1,0 +1,79 @@
+! ============================================================
+! leaf1b — BGP AS 65011 (MLAG Pair 1)
+! P2P underlay links (/31):
+!   Ethernet1 -> spine1  10.0.0.3/31   (leaf1b:.3   spine1:.2)
+!   Ethernet2 -> spine2  10.0.0.11/31  (leaf1b:.11  spine2:.10)
+!   Ethernet3 -> leaf1a  MLAG peer-link, bundled in Port-Channel1
+!   Loopback0            10.255.0.12/32
+! MLAG:
+!   Vlan4094             10.0.1.1/31   (leaf1b:.1  leaf1a:.0)
+!   Domain               MLAG_PAIR1
+! ============================================================
+
+service routing protocols model multi-agent
+
+hostname leaf1b
+
+username admin privilege 15 role network-admin secret admin
+aaa authorization exec default local
+
+ip routing
+
+spanning-tree mode mstp
+no spanning-tree vlan-id 4094
+
+vlan 4094
+   name MLAG_PEER
+   trunk group MLAG_PEER
+
+interface Port-Channel1
+   description MLAG_PEER_LINK_to_leaf1a
+   switchport mode trunk
+   switchport trunk group MLAG_PEER
+
+interface Ethernet1
+   description P2P_spine1
+   no switchport
+   ip address 10.0.0.3/31
+
+interface Ethernet2
+   description P2P_spine2
+   no switchport
+   ip address 10.0.0.11/31
+
+interface Ethernet3
+   description MLAG_PEER_leaf1a
+   channel-group 1 mode active
+
+interface Loopback0
+   ip address 10.255.0.12/32
+
+interface Vlan4094
+   description MLAG_PEER
+   no autostate
+   ip address 10.0.1.1/31
+
+mlag configuration
+   domain-id MLAG_PAIR1
+   local-interface Vlan4094
+   peer-address 10.0.1.0
+   peer-link Port-Channel1
+   reload-delay mlag 300
+   reload-delay non-mlag 330
+
+router bgp 65011
+   router-id 10.255.0.12
+   no bgp default ipv4-unicast
+   maximum-paths 4 ecmp 4
+   neighbor SPINES peer group
+   neighbor SPINES send-community
+   neighbor SPINES maximum-routes 12000
+   neighbor 10.0.0.2 peer group SPINES
+   neighbor 10.0.0.2 remote-as 65001
+   neighbor 10.0.0.2 description spine1
+   neighbor 10.0.0.10 peer group SPINES
+   neighbor 10.0.0.10 remote-as 65002
+   neighbor 10.0.0.10 description spine2
+   address-family ipv4
+      neighbor SPINES activate
+      network 10.255.0.12/32

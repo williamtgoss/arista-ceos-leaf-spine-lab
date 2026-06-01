@@ -1,0 +1,42 @@
+name: arista-leaf-spine
+
+topology:
+  defaults:
+    kind: ceos
+    image: ceos:4.35.4M
+
+  nodes:
+    spine1:
+      startup-config: configs/spine1/startup-config
+
+    spine2:
+      startup-config: configs/spine2/startup-config
+
+    leaf1a:
+      startup-config: configs/leaf1a/startup-config
+
+    leaf1b:
+      startup-config: configs/leaf1b/startup-config
+
+    leaf2a:
+      startup-config: configs/leaf2a/startup-config
+
+    leaf2b:
+      startup-config: configs/leaf2b/startup-config
+
+  links:
+    # Spine1 uplinks (Ethernet1–4 on spine1)
+    - endpoints: ["spine1:eth1", "leaf1a:eth1"]   # 10.0.0.0/31
+    - endpoints: ["spine1:eth2", "leaf1b:eth1"]   # 10.0.0.2/31
+    - endpoints: ["spine1:eth3", "leaf2a:eth1"]   # 10.0.0.4/31
+    - endpoints: ["spine1:eth4", "leaf2b:eth1"]   # 10.0.0.6/31
+
+    # Spine2 uplinks (Ethernet1–4 on spine2)
+    - endpoints: ["spine2:eth1", "leaf1a:eth2"]   # 10.0.0.8/31
+    - endpoints: ["spine2:eth2", "leaf1b:eth2"]   # 10.0.0.10/31
+    - endpoints: ["spine2:eth3", "leaf2a:eth2"]   # 10.0.0.12/31
+    - endpoints: ["spine2:eth4", "leaf2b:eth2"]   # 10.0.0.14/31
+
+    # MLAG peer-links (Ethernet3 on each leaf, bundled into Port-Channel1)
+    - endpoints: ["leaf1a:eth3", "leaf1b:eth3"]
+    - endpoints: ["leaf2a:eth3", "leaf2b:eth3"]

@@ -1,0 +1,116 @@
+# Step 1 — Install WSL2 and Docker Desktop
+
+ContainerLab runs on Linux. On Windows, we use WSL2 (Windows Subsystem for Linux 2) to provide the Linux environment, and Docker Desktop to manage containers.
+
+---
+
+## 1. Verify Virtualization is Enabled
+
+Open **Task Manager** → **Performance** → **CPU**. Confirm **Virtualization: Enabled** appears at the bottom right. If it shows Disabled, reboot and enable it in your BIOS/UEFI firmware settings (look for "Intel VT-x" or "AMD-V / SVM").
+
+---
+
+## 2. Install WSL2
+
+Open **PowerShell as Administrator** (right-click Start → Windows Terminal (Admin)) and run:
+
+```powershell
+wsl --install
+```
+
+This command:
+- Enables the WSL and Virtual Machine Platform Windows features
+- Installs the WSL2 Linux kernel
+- Sets WSL2 as the default version
+- Installs Ubuntu (latest LTS) as the default distribution
+
+**Restart your computer when prompted.**
+
+After restart, Ubuntu will open automatically and ask you to create a UNIX username and password. Choose a username and password — these will be your credentials inside WSL.
+
+### Verify WSL2 is running
+
+Open PowerShell and confirm the version:
+
+```powershell
+wsl --list --verbose
+```
+
+Expected output:
+
+```
+  NAME      STATE           VERSION
+* Ubuntu    Running         2
+```
+
+If Ubuntu shows VERSION 1, upgrade it:
+
+```powershell
+wsl --set-version Ubuntu 2
+wsl --set-default-version 2
+```
+
+---
+
+## 3. Install Docker Desktop
+
+1. Download Docker Desktop for Windows from the official Docker site:
+   **https://www.docker.com/products/docker-desktop/**
+
+2. Run the installer (`Docker Desktop Installer.exe`). When prompted, ensure **Use WSL 2 instead of Hyper-V** is checked.
+
+3. Complete the installation and **restart your computer** when prompted.
+
+4. Launch **Docker Desktop** from the Start menu. Accept the license agreement and wait for Docker to start (the whale icon in the system tray will stop animating when ready).
+
+---
+
+## 4. Enable WSL Integration for Ubuntu
+
+Docker Desktop needs explicit permission to integrate with each WSL2 distribution.
+
+1. Open Docker Desktop
+2. Click the **gear icon** (Settings) in the top right
+3. Go to **Resources** → **WSL Integration**
+4. Toggle **Ubuntu** to **On**
+5. Click **Apply & Restart**
+
+---
+
+## 5. Verify Docker Works in WSL
+
+Open your **Ubuntu** terminal (search "Ubuntu" in the Start menu or use Windows Terminal → Ubuntu tab) and run:
+
+```bash
+docker run hello-world
+```
+
+You should see:
+
+```
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+```
+
+If you receive a permission error, try:
+
+```bash
+sudo usermod -aG docker $USER
+```
+
+Then close and reopen the Ubuntu terminal and retry.
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| `wsl --install` fails with "feature not enabled" | Run PowerShell as Administrator |
+| Ubuntu shows as WSL version 1 | Run `wsl --set-version Ubuntu 2` |
+| Docker Desktop won't start | Ensure virtualization is enabled in BIOS; check Windows features: "Virtual Machine Platform" and "Windows Subsystem for Linux" are both enabled |
+| `docker: permission denied` in WSL | Add user to docker group: `sudo usermod -aG docker $USER`, then restart terminal |
+
+---
+
+Next: [Install ContainerLab](02-containerlab-install.md)

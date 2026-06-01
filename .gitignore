@@ -1,0 +1,19 @@
+# ContainerLab working directory
+.clab/
+
+# ContainerLab auto-generated files
+clab-*.yaml
+
+# cEOS image files (never commit these — they require an Arista account)
+*.tar
+*.tar.xz
+*.swi
+*.swix
+
+# Editor
+.vscode/settings.json
+*.code-workspace
+
+# OS
+.DS_Store
+Thumbs.db
