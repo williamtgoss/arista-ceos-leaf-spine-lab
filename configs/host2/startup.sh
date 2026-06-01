@@ -8,6 +8,9 @@
 # Install full iproute2 (replaces busybox ip for bonding support)
 apk add --no-cache --quiet iproute2 iputils
 
+# Set root password
+echo "root:Arista123!" | chpasswd
+
 # Load bonding kernel module
 modprobe bonding 2>/dev/null || true
 

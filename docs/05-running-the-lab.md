@@ -76,7 +76,7 @@ docker exec -it clab-arista-leaf-spine-spine1 Cli -c "show version"
 
 ```bash
 ssh admin@<management-ip>
-# Password: admin
+# Password: Arista123!
 ```
 
 Management IPs are shown in the deploy summary table, or you can find them with:

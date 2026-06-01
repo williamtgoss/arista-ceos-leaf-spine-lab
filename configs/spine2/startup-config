@@ -12,7 +12,7 @@ service routing protocols model multi-agent
 
 hostname spine2
 
-username admin privilege 15 role network-admin secret admin
+username admin privilege 15 role network-admin secret Arista123!
 aaa authorization exec default local
 
 ip routing

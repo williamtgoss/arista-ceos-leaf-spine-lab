@@ -57,7 +57,7 @@ Individual device configuration "startup-config" files can be found in the `conf
 
 | Username | Password |
 |----------|----------|
-| admin    | admin    |
+| admin    | Arista123! |
 
 
 ---
