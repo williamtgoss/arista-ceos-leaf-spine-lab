@@ -1,14 +1,16 @@
 ! ============================================================
 ! leaf1b — BGP AS 65011 (MLAG Pair 1)
 ! P2P underlay links (/31):
-!   Ethernet1 -> spine1  10.0.0.3/31   (leaf1b:.3   spine1:.2)
-!   Ethernet2 -> spine2  10.0.0.11/31  (leaf1b:.11  spine2:.10)
-!   Ethernet3 -> leaf1a  MLAG peer-link (member 1), bundled in Port-Channel10000
-!   Ethernet4 -> leaf1a  MLAG peer-link (member 2), bundled in Port-Channel10000
+!   Ethernet1 -> spine1  10.0.0.3/31    (leaf1b:.3   spine1:.2)
+!   Ethernet2 -> spine2  10.0.0.11/31   (leaf1b:.11  spine2:.10)
+!   Ethernet3 -> leaf1a  MLAG peer-link (member 1), bundled in Port-Channel100
+!   Ethernet4 -> leaf1a  MLAG peer-link (member 2), bundled in Port-Channel100
 !   Loopback0            10.255.0.12/32
 ! MLAG:
-!   Vlan4094             10.0.1.1/31   (leaf1b:.1  leaf1a:.0)
+!   Vlan4094             10.255.255.2/30  (leaf1b:.2  leaf1a:.1)
 !   Domain               MLAG_PAIR1
+! iBGP:
+!   MLAG-PEER neighbor   10.255.255.1    (leaf1a)
 ! ============================================================
 
 service routing protocols model multi-agent
@@ -56,12 +58,12 @@ interface Loopback0
 interface Vlan4094
    description MLAG_PEER
    no autostate
-   ip address 10.0.1.1/31
+   ip address 10.255.255.2/30
 
 mlag configuration
    domain-id MLAG_PAIR1
    local-interface Vlan4094
-   peer-address 10.0.1.0
+   peer-address 10.255.255.1
    peer-link Port-Channel100
    reload-delay mlag 300
    reload-delay non-mlag 330
@@ -79,6 +81,14 @@ router bgp 65011
    neighbor 10.0.0.10 peer group SPINES
    neighbor 10.0.0.10 remote-as 65001
    neighbor 10.0.0.10 description spine2
+   neighbor MLAG-PEER peer group
+   neighbor MLAG-PEER remote-as 65011
+   neighbor MLAG-PEER next-hop-self
+   neighbor MLAG-PEER send-community
+   neighbor MLAG-PEER maximum-routes 12000
+   neighbor 10.255.255.1 peer group MLAG-PEER
+   neighbor 10.255.255.1 description leaf1a
    address-family ipv4
       neighbor SPINES activate
+      neighbor MLAG-PEER activate
       network 10.255.0.12/32

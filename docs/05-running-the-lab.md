@@ -146,7 +146,7 @@ Expected output:
 MLAG Configuration:
 domain-id                          :              MLAG_PAIR1
 local-interface                    :            Vlan4094
-peer-address                       :             10.0.1.1
+peer-address                       :         10.255.255.2
 peer-link                          :        Port-Channel100
 peer-config                        :          consistent
 
@@ -183,8 +183,11 @@ docker exec -it clab-arista-leaf-spine-leaf1a Cli -c "show port-channel 100"
 | `show ip route bgp` | BGP-learned routes in the routing table |
 | `show mlag` | MLAG domain state and peer status |
 | `show mlag interfaces` | MLAG-member interfaces |
-| `show port-channel 100` | Port-Channel100 (MLAG peer-link) member status |
-| `show interface Ethernet3` | Physical state of the MLAG peer-link member |
+| `show port-channel 100` | Port-Channel100 (MLAG peer-link) member status (eth3+eth4) |
+| `show interface Ethernet3` | Physical state of MLAG peer-link member 1 |
+| `show interface Ethernet4` | Physical state of MLAG peer-link member 2 |
+| `show bgp neighbors 10.255.255.2` | iBGP MLAG-PEER session detail (on "a" switches) |
+| `show bgp neighbors 10.255.255.1` | iBGP MLAG-PEER session detail (on "b" switches) |
 | `ping <ip> source <loopback>` | End-to-end reachability test |
 
 ---
