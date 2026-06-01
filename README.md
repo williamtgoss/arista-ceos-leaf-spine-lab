@@ -1,4 +1,4 @@
-# ContainerLab Demo - Arista cEOS L3 Leaf-Spine Lab
+# Running a local ContainerLab environment - Arista cEOS L3 Leaf-Spine Lab
 
 A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-leaf-pair (MLAG) architecture, with step-by-step instruction for both Windows and MacOS.
 
