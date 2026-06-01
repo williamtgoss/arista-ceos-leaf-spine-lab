@@ -3,7 +3,7 @@ name: arista-leaf-spine
 topology:
   defaults:
     kind: arista_ceos
-    image: ceos:4.35.4M
+    image: ceos:latest
 
   nodes:
     # ----- Spine layer -----

@@ -79,15 +79,13 @@ ceos         4.35.4M    <image-id>     X minutes ago    ~1.7GB
 
 ---
 
-## 5. (Optional) Tag Shorthand
+## 5. Tag Shorthand
 
-If you want to be able to reference the image as just `ceos:latest`:
+To be able to reference the cEOS image as just `ceos:latest`, an tag will need to be created. This will allow us to define the image of `ceos:latest` in our ContainerLab yaml files and then we can change to latest image to whatever we install in the future and reapply this tag to that new ceos image. This will save us from having to update each ContainerLab yaml file in the future when an updated images is installed. 
 
 ```bash
 docker tag ceos:4.35.4M ceos:latest
 ```
-
-The topology file in this repo uses `ceos:4.35.4M` explicitly, so this step is optional.
 
 ---
 
@@ -95,7 +93,6 @@ The topology file in this repo uses `ceos:4.35.4M` explicitly, so this step is o
 
 | Symptom | Fix |
 |---------|-----|
-| `/mnt/c/Downloads/...` file not found | Confirm the exact filename: `ls /mnt/c/Downloads/ | grep cEOS` |
 | `docker: permission denied` | Run with `sudo`: `sudo docker import ...` |
 | Import hangs for more than 10 minutes | The `.tar.xz` decompression is CPU-intensive; wait it out. Check progress with `docker images` in another terminal — the image will appear when done |
 | Wrong image tag | Re-run `docker import` with the correct tag; remove the old one with `docker rmi <wrong-tag>` |
