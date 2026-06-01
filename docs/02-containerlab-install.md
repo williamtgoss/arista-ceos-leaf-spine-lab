@@ -40,15 +40,7 @@ containerlab version
 
 Expected output (version numbers will vary):
 
- ⣴⡾⠛⠛⠖ ⢠⣶⠟⠛⢷⣦ ⢸⣿⣧   ⣿ ⠛⢻⡟⠛⠛ ⣾⣿⡀  ⣿⡇ ⣿⣿⡄ ⢸⡇ ⣿⡟⠛⠛⠃⢸⣿⠛⠛⣷⡄ ⣿⡇      ⣿⡇
-⢸⣿      ⣿⡇    ⣿⡇⢸⣿⠹⣧⡀⣿  ⢸⡇  ⣸⡏⢹⣧  ⣿⡇ ⣿⡏⢿⣄⢸⡇ ⣿⣧⣤⣤ ⢸⣿⣀⣀⣾⠇ ⣿⡇⠐⠟⠛⢿⡆ ⣿⡷⠛⢿⣆
-⠘⣿⣄  ⡀ ⢻⣧⡀  ⣠⣿⠃⢸⣿ ⠘⣷⣿  ⢸⡇ ⢠⣿⠷⠶⢿⡆ ⣿⡇ ⣿⡇ ⢻⣾⡇ ⣿⡇   ⢸⣿⠉⢻⣧⡀ ⣿⡇⢰⡟⠛⣻⡇ ⣿⡇ ⣸⡿
- ⠈⠙⠛⠛⠉   ⠉⠛⠛⠋⠁ ⠘⠛  ⠈⠛  ⠘⠃  ⠚⠃  ⠘⠛ ⠛⠃ ⠛⠃  ⠙⠃ ⠛⠛⠛⠛⠃⠘⠛  ⠙⠓ ⠛⠃⠈⠛⠛⠙⠃ ⠛⠛⠛⠛⠁
-    version: 0.75.0
-     commit: 6a686b7d7
-       date: 2026-04-27T09:35:56Z
-     source: https://github.com/srl-labs/containerlab
- rel. notes: https://containerlab.dev/rn/0.XX/
+![Containerlab](/images/containerLab.png)
 
 
 ---
