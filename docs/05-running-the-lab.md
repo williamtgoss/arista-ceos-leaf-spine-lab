@@ -112,6 +112,8 @@ Neighbor         AS       MsgRcvd MsgSent  InQ OutQ  Up/Down State  PfxRcd PfxAc
 10.0.0.3      65011         ...     ...    0    0  00:00:xx Estab       1      1
 10.0.0.5      65012         ...     ...    0    0  00:00:xx Estab       1      1
 10.0.0.7      65012         ...     ...    0    0  00:00:xx Estab       1      1
+
+(spine2 output will be identical — both spines run AS 65001)
 ```
 
 ### Check the BGP routing table

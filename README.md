@@ -40,7 +40,7 @@ A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-le
 | Device  | Loopback0       | BGP AS |
 |---------|-----------------|--------|
 | spine1  | 10.255.0.1/32   | 65001  |
-| spine2  | 10.255.0.2/32   | 65002  |
+| spine2  | 10.255.0.2/32   | 65001  |
 | leaf1a  | 10.255.0.11/32  | 65011  |
 | leaf1b  | 10.255.0.12/32  | 65011  |
 | leaf2a  | 10.255.0.21/32  | 65012  |

@@ -1,5 +1,5 @@
 ! ============================================================
-! spine2 — BGP AS 65002
+! spine2 — BGP AS 65001
 ! P2P underlay links (/31):
 !   Ethernet1 -> leaf1a  10.0.0.8/31   (spine2:.8   leaf1a:.9)
 !   Ethernet2 -> leaf1b  10.0.0.10/31  (spine2:.10  leaf1b:.11)
@@ -40,7 +40,7 @@ interface Ethernet4
    no switchport
    ip address 10.0.0.14/31
 
-router bgp 65002
+router bgp 65001
    router-id 10.255.0.2
    no bgp default ipv4-unicast
    maximum-paths 4 ecmp 4

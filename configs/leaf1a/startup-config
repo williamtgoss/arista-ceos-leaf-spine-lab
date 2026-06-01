@@ -72,7 +72,7 @@ router bgp 65011
    neighbor 10.0.0.0 remote-as 65001
    neighbor 10.0.0.0 description spine1
    neighbor 10.0.0.8 peer group SPINES
-   neighbor 10.0.0.8 remote-as 65002
+   neighbor 10.0.0.8 remote-as 65001
    neighbor 10.0.0.8 description spine2
    address-family ipv4
       neighbor SPINES activate
