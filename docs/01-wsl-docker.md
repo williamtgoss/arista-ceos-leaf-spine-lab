@@ -12,6 +12,12 @@ Open **Task Manager** → **Performance** → **CPU**. Confirm **Virtualization:
 
 ## 2. Install WSL2
 
+By default, WSL will install the latest LTS image of Ubuntu. If you want to install a different distro, all support distros can be listed by entering 
+
+```powershell
+wsl -- list --online
+```
+
 Open **PowerShell as Administrator** (right-click Start → Windows Terminal (Admin)) and run:
 
 ```powershell
@@ -24,9 +30,10 @@ This command:
 - Sets WSL2 as the default version
 - Installs Ubuntu (latest LTS) as the default distribution
 
-**Restart your computer when prompted.**
+* Restart your computer, if prompted.
 
-After restart, Ubuntu will open automatically and ask you to create a UNIX username and password. Choose a username and password — these will be your credentials inside WSL.
+*** Setting up Username and password for your WSL account ***
+Ubuntu will open automatically and ask you to create a UNIX username and password. Choose a username and password — these will be your credentials inside WSL.
 
 ### Verify WSL2 is running
 
@@ -52,16 +59,12 @@ wsl --set-default-version 2
 
 ---
 
-## 3. Install Docker Desktop
+## 3. Install Docker on WSL 
 
-1. Download Docker Desktop for Windows from the official Docker site:
-   **https://www.docker.com/products/docker-desktop/**
-
-2. Run the installer (`Docker Desktop Installer.exe`). When prompted, ensure **Use WSL 2 instead of Hyper-V** is checked.
-
-3. Complete the installation and **restart your computer** when prompted.
-
-4. Launch **Docker Desktop** from the Start menu. Accept the license agreement and wait for Docker to start (the whale icon in the system tray will stop animating when ready).
+Below is a simplifed one line bash script to install doxker on your WSL linux VM
+```
+bash -c "$(curl https://raw.githubusercontent.com/PacketAnglers/containerlab/main/images/installdocker.sh)"
+```
 
 ---
 
