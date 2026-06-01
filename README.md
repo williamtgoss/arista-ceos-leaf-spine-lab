@@ -38,7 +38,8 @@ Individual device configuration "startup-config" files can be found in the `conf
 | spine2 ↔ leaf2b    | 10.0.0.14/31   | .14 / .15             |
 
 ### Leaf MLAG Links
-
+| MLAG Peers         | MLAG 4094 Subnet| MLAG Peer Links       |
+|--------------------|-----------------|-----------------------|
 | leaf1a ↔ leaf1b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf1a:.1 / leaf1b:.2 |
 | leaf2a ↔ leaf2b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf2a:.1 / leaf2b:.2 |
 
