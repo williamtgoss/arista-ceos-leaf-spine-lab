@@ -8,6 +8,10 @@ A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-le
 
 ![Network Topology](Network-Diagram.png)
 
+This environment is meant to be an example deployment as an initial ContainerLab environment. The network is a simple L3 Leaf-Spine design with two pairs of MLAG (multi-chassis link aggregation) switch pairs connecting to a two-switch spine. eBGP is established between each leaf switch and each spine, and iBGP is established between the leaf pairs. ECMP (Equal-Cost Multi-Pathing) is enabled for increased bandwidth and improved redundancy.
+
+Individual device configuration "startup-config" files can be found in the `configs` directory in the repo. Please review the `lab.clab.yaml` file for the ContainerLab topology and design details.
+
 ### Address Summary
 
 | Device  | Loopback0       | BGP AS |
@@ -19,6 +23,9 @@ A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-le
 | leaf2a  | 10.255.0.21/32  | 65012  |
 | leaf2b  | 10.255.0.22/32  | 65012  |
 
+
+### Uplink connections
+
 | Link               | Subnet         | Addresses             |
 |--------------------|----------------|-----------------------|
 | spine1 ↔ leaf1a    | 10.0.0.0/31    | .0 / .1               |
@@ -29,6 +36,9 @@ A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-le
 | spine2 ↔ leaf1b    | 10.0.0.10/31   | .10 / .11             |
 | spine2 ↔ leaf2a    | 10.0.0.12/31   | .12 / .13             |
 | spine2 ↔ leaf2b    | 10.0.0.14/31   | .14 / .15             |
+
+### Leaf MLAG Links
+
 | leaf1a ↔ leaf1b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf1a:.1 / leaf1b:.2 |
 | leaf2a ↔ leaf2b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf2a:.1 / leaf2b:.2 |
 
