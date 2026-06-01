@@ -20,6 +20,8 @@ If you or your organization already has an Arista support contract, use your exi
 
 Arista provides vEOS (virtualized) and cEOS (containerized) images to non-customers with a registered arista.com account. If you are an existing Arista customer, you will have access to all licensed software through your organizations account in addition to the vEOS and cEOS images.
 
+### 2.1 Windows Instructions
+
 1. Log in at **https://www.arista.com/en/support/software-download**
 2. In the left navigation, select **EOS** → **Active Releases** → **4.35** → **EOS-4.35.4M**
 3. Under the **cEOS-lab** section, download:
@@ -28,27 +30,36 @@ Arista provides vEOS (virtualized) and cEOS (containerized) images to non-custom
    cEOS-lab-4.35.4M.tar.xz
    ```
 
-   Save the file to a location you can easily find, such as `C:\Downloads\`.
+  **Save the file to a location you can easily find later. Note this location in reference to you local C: drive** 
 
 > **File size:** approximately 600–800 MB. Download time will depend on your connection speed.
+
+
+### 2.2 macOS Instructions
+
 
 ---
 
 ## 3. Import the Image into Docker
 
+### 3.1 Windows Instructions
+
 You can import the image directly from its Windows path in your WSL2 terminal — no need to copy the file.
 
 Open your **Ubuntu terminal** and run:
 
-```bash
-docker import /mnt/c/Downloads/cEOS-lab-4.35.4M.tar.xz ceos:4.35.4M
-```
+docker import /mnt/c/"location where you saved you cEOS-lab-4.35.4M.tar.xz" ceos:4.35.4M
 
 Explanation:
-- `/mnt/c/Downloads/` is how WSL2 accesses `C:\Downloads\` on Windows
+- `/mnt/c/` is how WSL2 accesses `C:\` on Windows
 - `ceos:4.35.4M` is the Docker image name and tag ContainerLab expects
 
 The import will take 1–3 minutes. When complete, you will see a SHA256 digest printed.
+
+### 3.2 macOS Instructions
+
+
+
 
 ---
 
