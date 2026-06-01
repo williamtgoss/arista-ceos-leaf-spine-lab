@@ -3,6 +3,7 @@
 The ContainerLab VSCode extension (by SR Linux Labs) lets you deploy, manage, and connect to ContainerLab topologies directly from VSCode — without needing to remember CLI commands.
 
 ---
+# Window 11 Install
 
 ## 1. Install Visual Studio Code
 
@@ -23,8 +24,14 @@ If VSCode is not already installed:
 3. Search for **ContainerLab**
 4. Click **Install** on the extension by **srlinux** (Extension ID: `srl-labs.vscode-containerlab`)
 
-### Via the command line
+### Via the Terminal in Virtual Studio Code
 
+1. In VS Code, from the top menu, select View --> Terminal
+2. VS Code may or maynot have not provided a Windows "Powershell" by default (you may be in your WSL instance). Open a new powershell terminal by:
+   - In the "Terminal Window" in VS Code, find "+" button and select the drop to the right and select "Powershell"
+![vscode-powershell](/images/powershell-vcCode.png)
+   - Once a new Powershell CLI terminal is opened, enter the following
+ 
 ```bash
 code --install-extension srl-labs.vscode-containerlab
 ```
