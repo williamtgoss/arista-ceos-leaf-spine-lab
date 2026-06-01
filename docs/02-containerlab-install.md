@@ -1,12 +1,10 @@
 # Step 2 — Install ContainerLab
 
-ContainerLab is installed inside your WSL2 Ubuntu environment. All commands in this guide are run in an Ubuntu terminal unless otherwise noted.
+ContainerLab is installed inside your Linux VM environment. All commands in this guide are run in an Ubuntu terminal unless otherwise noted.
 
 ---
 
 ## 1. Open an Ubuntu Terminal
-
-From the Windows Start menu, search for **Ubuntu** and open it, or open **Windows Terminal** and select the Ubuntu profile from the tab dropdown.
 
 ---
 
