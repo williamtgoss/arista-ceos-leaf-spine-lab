@@ -63,7 +63,7 @@ wsl --set-default-version 2
 
 Below is a simplifed one line bash script to install doxker on your WSL linux VM
 ```
-bash -c "$(curl https://raw.githubusercontent.com/PacketAnglers/containerlab/main/images/installdocker.sh)"
+bash -c "$(curl https://raw.githubusercontent.com/williamtgoss/arista-ceos-leaf-spine-lab/docs/Scripts/installdocker.sh)"
 ```
 
 ---
