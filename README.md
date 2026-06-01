@@ -44,7 +44,7 @@ Individual device configuration "startup-config" files can be found in the `conf
 | leaf2a ↔ leaf2b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf2a:.1 / leaf2b:.2 |
 
 
-## Default Credentials
+### Default Credentials
 
 | Username | Password |
 |----------|----------|
