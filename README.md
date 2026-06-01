@@ -25,7 +25,7 @@ A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-le
            │ AS:65011 │        │   AS:65012   │       │ AS:65012 │
            │10.255.0.11        │  10.255.0.21 │       │10.255.0.22
            └────┬─────┘        └──────┬───────┘       └─────┬────┘
-                │ Po1 (MLAG            │ Po1 (MLAG           │
+                │ Po100 (MLAG            │ Po100 (MLAG           │
                 │ peer-link)           │ peer-link)          │
            ┌────┴─────┐        ┌──────┴───────┐       ┌─────┴────┐
            │  leaf1b  │        │    leaf2b    │       └──leaf2a──┘
@@ -56,8 +56,8 @@ A complete ContainerLab topology running Arista cEOS 4.35.4M in a 2-spine / 2-le
 | spine2 ↔ leaf1b    | 10.0.0.10/31   | .10 / .11             |
 | spine2 ↔ leaf2a    | 10.0.0.12/31   | .12 / .13             |
 | spine2 ↔ leaf2b    | 10.0.0.14/31   | .14 / .15             |
-| leaf1a ↔ leaf1b    | 10.0.1.0/31    | MLAG peer (Po1)       |
-| leaf2a ↔ leaf2b    | 10.0.1.2/31    | MLAG peer (Po1)       |
+| leaf1a ↔ leaf1b    | 10.0.1.0/31    | MLAG peer (Po100, eth3+eth4) |
+| leaf2a ↔ leaf2b    | 10.0.1.2/31    | MLAG peer (Po100, eth3+eth4) |
 
 ---
 

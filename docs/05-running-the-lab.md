@@ -147,7 +147,7 @@ MLAG Configuration:
 domain-id                          :              MLAG_PAIR1
 local-interface                    :            Vlan4094
 peer-address                       :             10.0.1.1
-peer-link                          :        Port-Channel1
+peer-link                          :        Port-Channel100
 peer-config                        :          consistent
 
 MLAG Status:
@@ -169,7 +169,7 @@ leaf1b should show `state: Standby` and `negotiation status: Connected`.
 Check the MLAG peer-link Port-Channel:
 
 ```bash
-docker exec -it clab-arista-leaf-spine-leaf1a Cli -c "show port-channel 1"
+docker exec -it clab-arista-leaf-spine-leaf1a Cli -c "show port-channel 100"
 ```
 
 ---
@@ -183,7 +183,7 @@ docker exec -it clab-arista-leaf-spine-leaf1a Cli -c "show port-channel 1"
 | `show ip route bgp` | BGP-learned routes in the routing table |
 | `show mlag` | MLAG domain state and peer status |
 | `show mlag interfaces` | MLAG-member interfaces |
-| `show port-channel 1` | Port-Channel1 (MLAG peer-link) member status |
+| `show port-channel 100` | Port-Channel100 (MLAG peer-link) member status |
 | `show interface Ethernet3` | Physical state of the MLAG peer-link member |
 | `ping <ip> source <loopback>` | End-to-end reachability test |
 
@@ -223,6 +223,6 @@ sudo containerlab destroy -t lab.clab.yaml --cleanup
 |---------|-----|
 | Container exits immediately after deploy | cEOS failed to start — check logs: `docker logs clab-arista-leaf-spine-spine1` |
 | BGP neighbors stuck in `Active` state after 2+ minutes | Verify IP addressing in startup-configs; check interface is up: `show interface Ethernet1` |
-| MLAG state shows `Inactive` | Ensure Port-Channel1 is up on both peers; check Vlan4094 SVI is up with `no autostate` |
+| MLAG state shows `Inactive` | Ensure Port-Channel100 is up on both peers; check Vlan4094 SVI is up with `no autostate` |
 | `docker exec` returns "No such container" | Lab isn't deployed; run `sudo containerlab deploy -t lab.clab.yaml` |
 | Out of memory — containers crash | Close other applications; 16 GB RAM is the minimum for this 6-node lab |

@@ -2,7 +2,7 @@ name: arista-leaf-spine
 
 topology:
   defaults:
-    kind: ceos
+    kind: arista_ceos
     image: ceos:4.35.4M
 
   nodes:
@@ -37,6 +37,8 @@ topology:
     - endpoints: ["spine2:eth3", "leaf2a:eth2"]   # 10.0.0.12/31
     - endpoints: ["spine2:eth4", "leaf2b:eth2"]   # 10.0.0.14/31
 
-    # MLAG peer-links (Ethernet3 on each leaf, bundled into Port-Channel1)
+    # MLAG peer-links (Ethernet3+4 on each leaf, bundled into Port-Channel100)
     - endpoints: ["leaf1a:eth3", "leaf1b:eth3"]
+    - endpoints: ["leaf1a:eth4", "leaf1b:eth4"]
     - endpoints: ["leaf2a:eth3", "leaf2b:eth3"]
+    - endpoints: ["leaf2a:eth4", "leaf2b:eth4"]

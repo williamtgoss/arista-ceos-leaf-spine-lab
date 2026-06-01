@@ -3,7 +3,8 @@
 ! P2P underlay links (/31):
 !   Ethernet1 -> spine1  10.0.0.1/31   (leaf1a:.1  spine1:.0)
 !   Ethernet2 -> spine2  10.0.0.9/31   (leaf1a:.9  spine2:.8)
-!   Ethernet3 -> leaf1b  MLAG peer-link, bundled in Port-Channel1
+!   Ethernet3 -> leaf1b  MLAG peer-link (member 1), bundled in Port-Channel10000
+!   Ethernet4 -> leaf1b  MLAG peer-link (member 2), bundled in Port-Channel10000
 !   Loopback0            10.255.0.11/32
 ! MLAG:
 !   Vlan4094             10.0.1.0/31   (leaf1a:.0  leaf1b:.1)
@@ -26,7 +27,7 @@ vlan 4094
    name MLAG_PEER
    trunk group MLAG_PEER
 
-interface Port-Channel1
+interface Port-Channel100
    description MLAG_PEER_LINK_to_leaf1b
    switchport mode trunk
    switchport trunk group MLAG_PEER
@@ -43,7 +44,11 @@ interface Ethernet2
 
 interface Ethernet3
    description MLAG_PEER_leaf1b
-   channel-group 1 mode active
+   channel-group 100 mode active
+
+interface Ethernet4
+   description MLAG_PEER_leaf1b
+   channel-group 100 mode active
 
 interface Loopback0
    ip address 10.255.0.11/32
@@ -57,7 +62,7 @@ mlag configuration
    domain-id MLAG_PAIR1
    local-interface Vlan4094
    peer-address 10.0.1.1
-   peer-link Port-Channel1
+   peer-link Port-Channel100
    reload-delay mlag 300
    reload-delay non-mlag 330
 
