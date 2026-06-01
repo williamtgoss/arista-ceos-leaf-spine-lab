@@ -62,7 +62,7 @@ Individual device configuration "startup-config" files can be found in the `conf
 - 20 GB free disk space
 - An [Arista support account](https://www.arista.com/en/user-registration) to download cEOS
 
----
+
 
 ## Setup Guide
 
@@ -74,7 +74,6 @@ Follow these guides in order:
 4. [Install the VSCode ContainerLab extension](docs/04-vscode-extension.md)
 5. [Clone this repo and run the lab](docs/05-running-the-lab.md)
 
----
 
 ## Quick Start (after setup)
 
