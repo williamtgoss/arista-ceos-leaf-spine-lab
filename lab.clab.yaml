@@ -6,23 +6,42 @@ topology:
     image: ceos:4.35.4M
 
   nodes:
+    # ----- Spine layer -----
     spine1:
+      kind: arista_ceos
       startup-config: configs/spine1/startup-config
 
     spine2:
+      kind: arista_ceos
       startup-config: configs/spine2/startup-config
 
+    # ----- Leaf layer -----
     leaf1a:
+      kind: arista_ceos
       startup-config: configs/leaf1a/startup-config
 
     leaf1b:
+      kind: arista_ceos
       startup-config: configs/leaf1b/startup-config
 
     leaf2a:
+      kind: arista_ceos
       startup-config: configs/leaf2a/startup-config
 
     leaf2b:
+      kind: arista_ceos
       startup-config: configs/leaf2b/startup-config
+
+    # ----- Linux hosts -----
+    host1:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/host1/startup.sh
+
+    host2:
+      kind: linux
+      image: alpine:latest
+      startup-config: configs/host2/startup.sh
 
   links:
     # Spine1 uplinks (Ethernet1–4 on spine1)
@@ -42,3 +61,11 @@ topology:
     - endpoints: ["leaf1a:eth4", "leaf1b:eth4"]
     - endpoints: ["leaf2a:eth3", "leaf2b:eth3"]
     - endpoints: ["leaf2a:eth4", "leaf2b:eth4"]
+
+    # Host1 MLAG uplinks → leaf1a Ethernet10, leaf1b Ethernet10
+    - endpoints: ["host1:eth1", "leaf1a:eth10"]
+    - endpoints: ["host1:eth2", "leaf1b:eth10"]
+
+    # Host2 MLAG uplinks → leaf2a Ethernet10, leaf2b Ethernet10
+    - endpoints: ["host2:eth1", "leaf2a:eth10"]
+    - endpoints: ["host2:eth2", "leaf2b:eth10"]

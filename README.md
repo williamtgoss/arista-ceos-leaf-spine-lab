@@ -44,6 +44,15 @@ Individual device configuration "startup-config" files can be found in the `conf
 | leaf2a ↔ leaf2b    | 10.255.255.0/30 | MLAG peer (Po100, eth3+eth4); leaf2a:.1 / leaf2b:.2 |
 
 
+### Host Connections
+
+| Host  | VLAN | Subnet            | Host IP         | vARP Gateway  | Local SVI (a/b)             | Uplinks (LACP Po10)         |
+|-------|------|-------------------|-----------------|---------------|-----------------------------|-----------------------------|
+| host1 | 100  | 192.168.100.0/24  | 192.168.100.10  | 192.168.100.1 | leaf1a:.2 / leaf1b:.3       | eth1→leaf1a:e10, eth2→leaf1b:e10 |
+| host2 | 200  | 192.168.200.0/24  | 192.168.200.10  | 192.168.200.1 | leaf2a:.2 / leaf2b:.3       | eth1→leaf2a:e10, eth2→leaf2b:e10 |
+
+> **Note:** Host LACP bonding requires the Linux `bonding` kernel module. On WSL2, run `sudo modprobe bonding` before deploying the lab if the module is not already loaded.
+
 ### Default Credentials
 
 | Username | Password |

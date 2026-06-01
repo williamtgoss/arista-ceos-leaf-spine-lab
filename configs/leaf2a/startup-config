@@ -1,16 +1,19 @@
 ! ============================================================
 ! leaf2a — BGP AS 65012 (MLAG Pair 2)
 ! P2P underlay links (/31):
-!   Ethernet1 -> spine1  10.0.0.5/31    (leaf2a:.5   spine1:.4)
-!   Ethernet2 -> spine2  10.0.0.13/31   (leaf2a:.13  spine2:.12)
-!   Ethernet3 -> leaf2b  MLAG peer-link (member 1), bundled in Port-Channel100
-!   Ethernet4 -> leaf2b  MLAG peer-link (member 2), bundled in Port-Channel100
-!   Loopback0            10.255.0.21/32
+!   Ethernet1  -> spine1   10.0.0.5/31    (leaf2a:.5   spine1:.4)
+!   Ethernet2  -> spine2   10.0.0.13/31   (leaf2a:.13  spine2:.12)
+!   Ethernet3  -> leaf2b   MLAG peer-link (member 1), Port-Channel100
+!   Ethernet4  -> leaf2b   MLAG peer-link (member 2), Port-Channel100
+!   Ethernet10 -> host2    Host MLAG uplink, Port-Channel10 (MLAG ID 10)
+!   Loopback0              10.255.0.21/32
 ! MLAG:
-!   Vlan4094             10.255.255.1/30  (leaf2a:.1  leaf2b:.2)
-!   Domain               MLAG_PAIR2
+!   Vlan4094               10.255.255.1/30  (leaf2a:.1  leaf2b:.2)
+!   Domain                 MLAG_PAIR2
 ! iBGP:
-!   MLAG-PEER neighbor   10.255.255.2    (leaf2b)
+!   MLAG-PEER neighbor     10.255.255.2    (leaf2b)
+! SVIs:
+!   Vlan200                192.168.200.2/24  vARP: 192.168.200.1
 ! ============================================================
 
 service routing protocols model multi-agent
@@ -21,13 +24,24 @@ username admin privilege 15 role network-admin secret admin
 aaa authorization exec default local
 
 ip routing
+ip virtual-router mac-address 00:1c:73:00:dc:01
 
 spanning-tree mode mstp
 no spanning-tree vlan-id 4094
 
+vlan 200
+   name HOSTS_VLAN200
+   trunk group MLAG_PEER
+
 vlan 4094
    name MLAG_PEER
    trunk group MLAG_PEER
+
+interface Port-Channel10
+   description HOST2_MLAG_ID10
+   switchport mode trunk
+   switchport trunk allowed vlan 200
+   mlag 10
 
 interface Port-Channel100
    description MLAG_PEER_LINK_to_leaf2b
@@ -52,8 +66,17 @@ interface Ethernet4
    description MLAG_PEER_leaf2b
    channel-group 100 mode active
 
+interface Ethernet10
+   description HOST2
+   channel-group 10 mode active
+
 interface Loopback0
    ip address 10.255.0.21/32
+
+interface Vlan200
+   description HOSTS_VLAN200
+   ip address 192.168.200.2/24
+   ip virtual-router address 192.168.200.1
 
 interface Vlan4094
    description MLAG_PEER
@@ -92,3 +115,4 @@ router bgp 65012
       neighbor SPINES activate
       neighbor MLAG-PEER activate
       network 10.255.0.21/32
+      network 192.168.200.0/24
