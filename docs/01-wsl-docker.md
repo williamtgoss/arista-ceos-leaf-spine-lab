@@ -63,30 +63,19 @@ wsl --set-default-version 2
 
 Below is a simplifed one line bash script to install doxker on your WSL linux VM
 ```
-bash -c "$(curl https://raw.githubusercontent.com/williamtgoss/arista-ceos-leaf-spine-lab/docs/Scripts/installdocker.sh)"
+bash -c "$(curl https://raw.githubusercontent.com/williamtgoss/arista-ceos-leaf-spine-lab/refs/heads/master/docs/Scripts/installdocker.sh)"
 ```
 
 ---
 
-## 4. Enable WSL Integration for Ubuntu
+## 4. Verify Docker Works in WSL
 
-Docker Desktop needs explicit permission to integrate with each WSL2 distribution.
-
-1. Open Docker Desktop
-2. Click the **gear icon** (Settings) in the top right
-3. Go to **Resources** → **WSL Integration**
-4. Toggle **Ubuntu** to **On**
-5. Click **Apply & Restart**
-
----
-
-## 5. Verify Docker Works in WSL
-
-Open your **Ubuntu** terminal (search "Ubuntu" in the Start menu or use Windows Terminal → Ubuntu tab) and run:
+In your **Ubuntu** terminal (search "Ubuntu" in the Start menu or use Windows Terminal → Ubuntu tab) and run:
 
 ```bash
 docker run hello-world
 ```
+
 
 You should see:
 
@@ -104,6 +93,10 @@ sudo usermod -aG docker $USER
 Then close and reopen the Ubuntu terminal and retry.
 
 ---
+
+## Continue to 02-Containerlab-install.md
+
+
 
 ## Troubleshooting
 
