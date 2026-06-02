@@ -5,7 +5,11 @@ ContainerLab is installed inside your Linux VM environment. All commands in this
 ---
 
 ## 1. Open an Ubuntu Terminal
-
+1. In the lower left hand corner of VS Code, find the "><" icon and click on it
+     [great-less-icon](/images/greater-less-icon.png)
+2. In the Menu, select "Connect to WSL"
+      [VS-Code-WSL](/images/VS-Code-WSL.png)
+3. On the VS Code top menu, select Terminal -> New Terminal. This will open a new Terminal window in the lower half of the VS Code.  
 ---
 
 ## 2. Install ContainerLab

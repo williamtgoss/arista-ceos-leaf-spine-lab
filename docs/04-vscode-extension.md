@@ -17,20 +17,22 @@ If VSCode is not already installed:
 
 ## 2. Install the ContainerLab Extension
 
-### Via the Extensions Marketplace (recommended)
+### Connect VSCode to local WSL instance
+
+1. In the lower left hand corner of VS code, find the "><" icon and click on it
+     [great-less-icon](/images/greater-less-icon.png)
+2. In the Menu, select "Connect to WSL"
+      [VS-Code-WSL](/images/VS-Code-WSL.png)
+
+
+### Via the VS Code Extensions Marketplace
 
 1. Open VSCode
-2. Click the **Extensions** icon in the left sidebar (or press `Ctrl+Shift+X`)
+2. Click the **Extensions** icon in the left sidebar (looks like 4 boxes with the upper left box stilted on its side) or press `Ctrl+Shift+X`
 3. Search for **ContainerLab**
 4. Click **Install** on the extension by **srlinux** (Extension ID: `srl-labs.vscode-containerlab`)
 
 ### Via the Terminal in Virtual Studio Code
-
-1. In VS Code, from the top menu, select View --> Terminal
-2. VS Code may or maynot have not provided a Windows "Powershell" by default (you may be in your WSL instance). Open a new powershell terminal by:
-   - In the "Terminal Window" in VS Code, find "+" button and select the drop to the right and select "Powershell"
-![vscode-powershell](/images/powershell-vcCode.png)
-   - Once a new Powershell CLI terminal is opened, enter the following
  
 ```bash
 code --install-extension srl-labs.vscode-containerlab
@@ -53,17 +55,37 @@ Once installed, the ContainerLab extension adds a **ContainerLab** panel to the 
 
 ---
 
-## 4. Open new Folder in VScode and Clone this repo.
+## 4. Open New Folder in VS Code and Clone this repo.
 
-The easiest way to work with this repo is to open it from WSL2 using the **Remote - WSL** extension.
+Create a new folder workspace to clone the example repo to stand up your first ContainerLab
 
-### 1. In VS Code, select **File-> Open Folder**
-### 2. Navigate to a file location in which you want you host your repository
-### 3. Right-click and create a new Folder named 
-```
-arista-ceos-leaf-spine-lab
-```
-### 4. Select the new folder and click "select folder" button.
+### 1. Create a new folder in your ideal local workstation for this repo and move your terminal CLI to that location.
+
+This can be one using CLI terminal or your native OS. This folder can reside in ether the WSL/Linux VM or on your workstation local storage. Keep note of the folders location and name for reference in the next step.
+
+- remember that for WSL, your normal windows mapped drives can be found in "/mnt/". A windows C: is located at /mnt/c/
+
+
+**Examples**
+Using WSL Terminal CLI to create a folder to a Windows C: drive named "my-repo"
+``
+mkdir /mnt/c/my-repo
+cd /mnt/c/my-repo
+``
+
+Using WSL Terminal CLI to create folder named "my-repo" in WSL user home directory for user name "LabUser1"
+``
+mkdir /home/LabUser1/my-repo
+cd /home/LabUser1/my-repo
+``
+
+### 2. In VS Code set your "Explorer" context to the same new folder 
+
+select **File-> Open Folder** and navigate to the folder created in step 1 and select "OK"
+  - remember that for WSL, your normal windows mapped drives can be found in "/mnt/". A windows C: is located at /mnt/c/
+  - users can also use "Show Local" button to see the native Window Navigator style of file navigation and click "Select Folder" button
+
+### 3. Select the new folder and click "select folder" button.
 ### 5. Open a new WSL "Linux" Terminal by selecting **View -> Terminal**
    - Validate Terinal window is in WSL/Linux, rather than PowerShell
    - if needed, select the dropdown to the right of the "+" in the terminal window and select your Linix/WSL terminal 

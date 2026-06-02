@@ -1,23 +1,21 @@
-# Step 5 — Clone the Repo and Run the Lab
+# Step 5 — Start and Run the Lab
 
-With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to deploy the lab.
+With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to deploy the lab. There are two different way provide below that can be used to deploy your containerlab environments; Containerlab VS Code Extention or CLI
+---
+# Deploy the Lab from VC Code ContainerLab Extention
+
+## 1 Open lab in ContainerLab Extention
+
+
 
 ---
+# CLI Options
 
-## 1. Clone the Repository
+## 1. Deploy the Lab from the Terminal
 
-Open your **Ubuntu terminal** and clone the repo into your WSL2 home directory:
+Open a terminal window in VS Code in your linux vm. Navigate to the location where you have cloned the gitlab repository and the lab.clab.yaml file is located. 
 
-```bash
-git clone https://github.com/williamtgoss/arista-ceos-leaf-spine-lab.git arista-leaf-spine
-cd arista-leaf-spine
-```
-
-> **Work inside WSL2:** Always clone and run the lab from within the WSL2 filesystem (e.g., `~/arista-leaf-spine`), not from a Windows path like `/mnt/c/...`. ContainerLab performance and file permissions work correctly only on the native Linux filesystem.
-
----
-
-## 2. Deploy the Lab from the Terminal
+Enter the following command to start up the demo lab.
 
 ```bash
 sudo containerlab deploy -t lab.clab.yaml
@@ -26,7 +24,7 @@ sudo containerlab deploy -t lab.clab.yaml
 ContainerLab will:
 1. Pull/verify the `ceos:4.35.4M` Docker image
 2. Create a Docker network (`clab`) for management access
-3. Start 6 containers (spine1, spine2, leaf1a, leaf1b, leaf2a, leaf2b)
+3. Start 8 containers (host1, host2, spine1, spine2, leaf1a, leaf1b, leaf2a, leaf2b)
 4. Wire the virtual links between containers
 5. Apply each node's startup configuration
 
@@ -35,32 +33,52 @@ ContainerLab will:
 When complete you will see a summary table like:
 
 ```
-+----+---------------------------------------+--------------+---------+------+---------+
-| #  |                 Name                  |  Kind/Image  |  State  | IPv4 |   IPv6  |
-+----+---------------------------------------+--------------+---------+------+---------+
-|  1 | clab-arista-leaf-spine-leaf1a         | ceos         | running | ...  | N/A     |
-|  2 | clab-arista-leaf-spine-leaf1b         | ceos         | running | ...  | N/A     |
-|  3 | clab-arista-leaf-spine-leaf2a         | ceos         | running | ...  | N/A     |
-|  4 | clab-arista-leaf-spine-leaf2b         | ceos         | running | ...  | N/A     |
-|  5 | clab-arista-leaf-spine-spine1         | ceos         | running | ...  | N/A     |
-|  6 | clab-arista-leaf-spine-spine2         | ceos         | running | ...  | N/A     |
-+----+---------------------------------------+--------------+---------+------+---------+
+╭───────────────────────────────┬───────────────┬─────────┬───────────────────╮
+│              Name             │   Kind/Image  │  State  │   IPv4/6 Address  │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-host1  │ linux         │ running │ 172.20.20.3       │
+│                               │ alpine:latest │         │ 3fff:172:20:20::3 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-host2  │ linux         │ running │ 172.20.20.2       │
+│                               │ alpine:latest │         │ 3fff:172:20:20::2 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-leaf1a │ arista_ceos   │ running │ 172.20.20.6       │
+│                               │ ceos:latest   │         │ 3fff:172:20:20::6 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-leaf1b │ arista_ceos   │ running │ 172.20.20.5       │
+│                               │ ceos:latest   │         │ 3fff:172:20:20::5 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-leaf2a │ arista_ceos   │ running │ 172.20.20.4       │
+│                               │ ceos:latest   │         │ 3fff:172:20:20::4 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-leaf2b │ arista_ceos   │ running │ 172.20.20.7       │
+│                               │ ceos:latest   │         │ 3fff:172:20:20::7 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-spine1 │ arista_ceos   │ running │ 172.20.20.9       │
+│                               │ ceos:latest   │         │ 3fff:172:20:20::9 │
+├───────────────────────────────┼───────────────┼─────────┼───────────────────┤
+│ clab-arista-leaf-spine-spine2 │ arista_ceos   │ running │ 172.20.20.8       │
+│                               │ ceos:latest   │         │ 3fff:172:20:20::8 │
+╰───────────────────────────────┴───────────────┴─────────┴───────────────────╯
+```
+---
+
+## 2. Connect to a Node
+
+### Via SSH
+
+Identify the internal ContainerLab Management IPs ether during the inital start up or you can find them with:
+
+```bash
+sudo containerlab inspect -t lab.clab.yaml
 ```
 
----
+Connect via SSH to the IP address of the host you want. The example below is for spine1 
 
-## 3. Deploy the Lab from VSCode
-
-If you opened the repo in VSCode with the Remote - WSL extension:
-
-1. In the VSCode Explorer, right-click `lab.clab.yaml`
-2. Select **ContainerLab: Deploy lab**
-
-The terminal pane will show the same output as the CLI deploy above. The **ContainerLab** sidebar panel will populate with the running nodes once they are up.
-
----
-
-## 4. Connect to a Node
+```bash
+ssh admin@172.20.20.9
+# Password: Arista123!
+```
 
 ### Via Docker exec (CLI)
 
@@ -72,26 +90,21 @@ docker exec -it clab-arista-leaf-spine-spine1 Cli
 docker exec -it clab-arista-leaf-spine-spine1 Cli -c "show version"
 ```
 
-### Via SSH
+## 3. Destroying the Lab from the Terminal
+
+While labs can be started, restarted, and stopped, the underlining "management" network of the lab will remain opertional until the lab is destroyed. This will completely remove all remenents of the lab environment and configurations. 
 
 ```bash
-ssh admin@<management-ip>
-# Password: Arista123!
+sudo containerlab destroy -t lab.clab.yaml
 ```
 
-Management IPs are shown in the deploy summary table, or you can find them with:
+## 4. Additional ContainerLab CLI commands
 
-```bash
-sudo containerlab inspect -t lab.clab.yaml
-```
-
-### Via VSCode ContainerLab Extension
-
-Click the SSH icon next to any running node in the ContainerLab sidebar.
+For additional options of commands that can be used for deployment of ContainerLab environments, please reference the ContainerLab's [Command Reference Page](https://containerlab.dev/cmd/deploy/)
 
 ---
 
-## 5. Verify BGP Sessions
+# Verify Lab Configuration BGP Sessions
 
 After the lab has been running for 60–90 seconds, verify BGP is established.
 
