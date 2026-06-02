@@ -57,17 +57,17 @@ Once installed, the ContainerLab extension adds a **ContainerLab** panel to the 
 
 The easiest way to work with this repo is to open it from WSL2 using the **Remote - WSL** extension.
 
-1. In VS Code, select **File-> Open Folder**
-2. Navigate to a file location in which you want you host your repository
-3. Right-click and create a new Folder named 
+### 1. In VS Code, select **File-> Open Folder**
+### 2. Navigate to a file location in which you want you host your repository
+### 3. Right-click and create a new Folder named 
 ```
 arista-ceos-leaf-spine-lab
 ```
-4. Select the new folder and click "select folder" button.
-5. Open a new WSL "Linux" Terminal by selecting **View -> Terminal**
+### 4. Select the new folder and click "select folder" button.
+### 5. Open a new WSL "Linux" Terminal by selecting **View -> Terminal**
    - Validate Terinal window is in WSL/Linux, rather than PowerShell
    - if needed, select the dropdown to the right of the "+" in the terminal window and select your Linix/WSL terminal 
-6. In WSL, enter
+### 6. In WSL, enter
    ```
    git clone https://github.com/williamtgoss/arista-ceos-leaf-spine-lab.git
    ```
@@ -75,18 +75,6 @@ arista-ceos-leaf-spine-lab
 
 ---
 
-## 5. Configure the Extension (Optional)
-
-The extension works out of the box with no configuration needed. Optional settings can be found in VSCode's settings (`Ctrl+,`) by searching for `containerlab`.
-
-Common settings:
-
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `containerlab.sudoEnabled` | `true` | Run ContainerLab commands with sudo |
-| `containerlab.dockerHost` | (auto) | Custom Docker socket path |
-
----
 
 ## Troubleshooting
 
