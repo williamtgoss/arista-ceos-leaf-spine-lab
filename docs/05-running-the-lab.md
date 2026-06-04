@@ -1,10 +1,10 @@
 # Step 5 — Start and Run the Lab
 
-With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to deploy the lab. There are two different way provide below that can be used to deploy your containerlab environments; Containerlab VS Code Extention or CLI
+With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to deploy the lab. There are two different ways provided below that can be used to deploy your ContainerLab environments: the VS Code Extension or CLI
 ---
-# Deploy the Lab from VC Code ContainerLab Extention
+# Deploy the Lab from VS Code ContainerLab Extension
 
-## 1 Open lab in ContainerLab Extention
+## 1. Open Lab in ContainerLab Extension
 
 
 
@@ -13,7 +13,7 @@ With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to 
 
 ## 1. Deploy the Lab from the Terminal
 
-Open a terminal window in VS Code in your linux vm. Navigate to the location where you have cloned the gitlab repository and the lab.clab.yaml file is located. 
+Open a terminal window in VS Code in your linux vm. Navigate to the location where you have cloned the GitHub repository and the lab.clab.yaml file is located. 
 
 Enter the following command to start up the demo lab.
 
@@ -67,7 +67,7 @@ When complete you will see a summary table like:
 
 ### Via SSH
 
-Identify the internal ContainerLab Management IPs ether during the inital start up or you can find them with:
+Identify the internal ContainerLab management IPs either during the initial startup or you can find them with:
 
 ```bash
 sudo containerlab inspect -t lab.clab.yaml
@@ -92,7 +92,7 @@ docker exec -it clab-arista-leaf-spine-spine1 Cli -c "show version"
 
 ## 3. Destroying the Lab from the Terminal
 
-While labs can be started, restarted, and stopped, the underlining "management" network of the lab will remain opertional until the lab is destroyed. This will completely remove all remenents of the lab environment and configurations. 
+While labs can be started, restarted, and stopped, the underlying "management" network of the lab will remain operational until the lab is destroyed. This will completely remove all remnants of the lab environment and configurations. 
 
 ```bash
 sudo containerlab destroy -t lab.clab.yaml

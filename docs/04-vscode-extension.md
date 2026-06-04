@@ -3,7 +3,7 @@
 The ContainerLab VSCode extension (by SR Linux Labs) lets you deploy, manage, and connect to ContainerLab topologies directly from VSCode — without needing to remember CLI commands.
 
 ---
-# Window 11 Install
+# Windows 11 Install
 
 ## 1. Install Visual Studio Code
 
@@ -19,10 +19,10 @@ If VSCode is not already installed:
 
 ### Connect VSCode to local WSL instance
 
-1. In the lower left hand corner of VS code, find the "><" icon and click on it
-     [great-less-icon](/images/greater-less-icon.png)
+1. In the lower left hand corner of VS Code, find the "><" icon and click on it
+     ![great-less-icon](/images/greater-less-icon.png)
 2. In the Menu, select "Connect to WSL"
-      [VS-Code-WSL](/images/VS-Code-WSL.png)
+      ![VS-Code-WSL](/images/VS-Code-WSL.png)
 
 
 ### Via the VS Code Extensions Marketplace
@@ -32,7 +32,7 @@ If VSCode is not already installed:
 3. Search for **ContainerLab**
 4. Click **Install** on the extension by **srlinux** (Extension ID: `srl-labs.vscode-containerlab`)
 
-### Via the Terminal in Virtual Studio Code
+### Via the Terminal in Visual Studio Code
  
 ```bash
 code --install-extension srl-labs.vscode-containerlab
@@ -61,9 +61,9 @@ Create a new folder workspace to clone the example repo to stand up your first C
 
 ### 1. Create a new folder in your ideal local workstation for this repo and move your terminal CLI to that location.
 
-This can be one using CLI terminal or your native OS. This folder can reside in ether the WSL/Linux VM or on your workstation local storage. Keep note of the folders location and name for reference in the next step.
+This can be done using the CLI terminal or your native OS. This folder can reside in either the WSL/Linux VM or on your workstation local storage. Keep note of the folders location and name for reference in the next step.
 
-- remember that for WSL, your normal windows mapped drives can be found in "/mnt/". A windows C: is located at /mnt/c/
+- remember that for WSL, your normal Windows mapped drives can be found in "/mnt/". A windows C: is located at /mnt/c/
 
 
 **Examples**
@@ -82,13 +82,13 @@ cd /home/LabUser1/my-repo
 ### 2. In VS Code set your "Explorer" context to the same new folder 
 
 select **File-> Open Folder** and navigate to the folder created in step 1 and select "OK"
-  - remember that for WSL, your normal windows mapped drives can be found in "/mnt/". A windows C: is located at /mnt/c/
+  - remember that for WSL, your normal Windows mapped drives can be found in "/mnt/". A windows C: is located at /mnt/c/
   - users can also use "Show Local" button to see the native Window Navigator style of file navigation and click "Select Folder" button
 
 ### 3. Select the new folder and click "select folder" button.
 ### 5. Open a new WSL "Linux" Terminal by selecting **View -> Terminal**
-   - Validate Terinal window is in WSL/Linux, rather than PowerShell
-   - if needed, select the dropdown to the right of the "+" in the terminal window and select your Linix/WSL terminal 
+   - Validate Terminal window is in WSL/Linux, rather than PowerShell
+   - if needed, select the dropdown to the right of the "+" in the terminal window and select your Linux/WSL terminal
 ### 6. In WSL, enter
    ```
    git clone https://github.com/williamtgoss/arista-ceos-leaf-spine-lab.git

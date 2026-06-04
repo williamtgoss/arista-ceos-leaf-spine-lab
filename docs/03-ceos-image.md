@@ -18,7 +18,7 @@ If you or your organization already has an Arista support contract, use your exi
 
 ## 2. Download the cEOS Image
 
-Arista provides vEOS (virtualized) and cEOS (containerized) images to non-customers with a registered arista.com account. If you are an existing Arista customer, you will have access to all licensed software through your organizations account in addition to the vEOS and cEOS images.
+Arista provides vEOS (virtualized) and cEOS (containerized) images to non-customers with a registered arista.com account. If you are an existing Arista customer, you will have access to all licensed software through your organization's account in addition to the vEOS and cEOS images.
 
 ### 2.1 Windows Instructions
 
@@ -30,7 +30,7 @@ Arista provides vEOS (virtualized) and cEOS (containerized) images to non-custom
    cEOS-lab-4.35.4M.tar.xz
    ```
 
-  **Save the file to a location you can easily find later. Note this location in reference to you local C: drive** 
+  **Save the file to a location you can easily find later. Make a note of the file's location on your local C: drive.**
 
 > **File size:** approximately 600â€“800 MB. Download time will depend on your connection speed.
 
@@ -48,7 +48,7 @@ You can import the image directly from its Windows path in your WSL2 terminal â€
 
 Open your **Ubuntu terminal** and run:
 ```
-docker import /mnt/c/**location where you saved you cEOS-lab-4.35.4M.tar.xz** ceos:4.35.4M
+docker import /mnt/c/**location where you saved your cEOS-lab-4.35.4M.tar.xz** ceos:4.35.4M
 ```
 
 Explanation:
@@ -81,7 +81,7 @@ ceos         4.35.4M    <image-id>     X minutes ago    ~1.7GB
 
 ## 5. Tag Shorthand
 
-To be able to reference the cEOS image as just `ceos:latest`, an tag will need to be created. This will allow us to define the image of `ceos:latest` in our ContainerLab yaml files and then we can change to latest image to whatever we install in the future and reapply this tag to that new ceos image. This will save us from having to update each ContainerLab yaml file in the future when an updated images is installed. 
+To be able to reference the cEOS image as just `ceos:latest`, a tag will need to be created. This will allow us to define the image as `ceos:latest` in our ContainerLab yaml files and then we can change the latest image to whatever we install in the future and reapply this tag to that new cEOS image. This will save us from having to update each ContainerLab yaml file in the future when an updated image is installed. 
 
 ```bash
 docker tag ceos:4.35.4M ceos:latest

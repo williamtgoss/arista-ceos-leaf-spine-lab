@@ -60,7 +60,7 @@ wsl --set-default-version 2
 
 ---
 
-## 3. Install Docker on WSL 
+## 3. Install Docker on WSL
 
 Below is a simplified one-line bash script to install Docker on your WSL Linux VM:
 ```
@@ -71,7 +71,7 @@ bash -c "$(curl https://raw.githubusercontent.com/williamtgoss/arista-ceos-leaf-
 
 ## 4. Verify Docker Works in WSL
 
-In your **Ubuntu** terminal (search "Ubuntu" in the Start menu or use Windows Terminal → Ubuntu tab) and run:
+Open your **Ubuntu** terminal (search "Ubuntu" in the Start menu or use Windows Terminal → Ubuntu tab) and run:
 
 ```bash
 docker run hello-world
