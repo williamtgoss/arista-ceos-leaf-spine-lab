@@ -88,6 +88,9 @@ Follow these guides in order:
 # macOS Install Guide
 More details to come.
 
+Hi James!
+
+
 ---
 
 
