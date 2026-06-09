@@ -83,6 +83,13 @@ Follow these guides in order:
 4. [Install the VSCode ContainerLab extension](docs/04-vscode-extension.md)
 5. [Clone this repo and run the lab](docs/05-running-the-lab.md)
 
+---
+
+# macOS Install Guide
+More details to come.
+
+---
+
 
 ## Quick Start (after setup)
 
@@ -104,12 +111,6 @@ docker exec -it clab-arista-leaf-spine-leaf1a Cli -c "show mlag"
 sudo containerlab destroy -t lab.clab.yaml
 ```
 ---
-
-# macOS Install Guide
-More details to come.
-
----
-
 
 ## Repository Structure
 
