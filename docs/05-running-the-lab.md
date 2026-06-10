@@ -1,6 +1,6 @@
 # Step 5 — Start and Run the Lab
 
-With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to deploy the lab. There are two different ways provided below that can be used to deploy your ContainerLab environments: the VS Code Extension or CLI
+With your Linux VM (WSL2 or OrbStack), Docker, ContainerLab, and the cEOS image all set up, you're ready to deploy the lab. There are two different ways provided below that can be used to deploy your ContainerLab environments: the VS Code Extension or CLI
 ---
 # Deploy the Lab from VS Code ContainerLab Extension
 
@@ -13,7 +13,7 @@ With WSL2, Docker, ContainerLab, and the cEOS image all set up, you're ready to 
 
 ## 1. Deploy the Lab from the Terminal
 
-Open a terminal window in VS Code in your linux vm. Navigate to the location where you have cloned the GitHub repository and the lab.clab.yaml file is located. 
+Open a terminal window in VS Code in your Linux VM (WSL2 on Windows, or OrbStack on macOS). Navigate to the location where you have cloned the GitHub repository and the lab.clab.yaml file is located. 
 
 Enter the following command to start up the demo lab.
 

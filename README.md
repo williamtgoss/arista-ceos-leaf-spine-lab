@@ -51,7 +51,7 @@ Individual device configuration "startup-config" files can be found in the `conf
 | host1 | 100  | 192.168.100.0/24  | 192.168.100.10  | 192.168.100.1 | leaf1a:.2 / leaf1b:.3       | eth1→leaf1a:e10, eth2→leaf1b:e10 |
 | host2 | 200  | 192.168.200.0/24  | 192.168.200.10  | 192.168.200.1 | leaf2a:.2 / leaf2b:.3       | eth1→leaf2a:e10, eth2→leaf2b:e10 |
 
-> **Note:** Host LACP bonding requires the Linux `bonding` kernel module. On WSL2, run `sudo modprobe bonding` before deploying the lab if the module is not already loaded.
+> **Note:** Host LACP bonding requires the Linux `bonding` kernel module. On WSL2 or OrbStack, run `sudo modprobe bonding` before deploying the lab if the module is not already loaded.
 
 ### Default Credentials
 
@@ -86,7 +86,26 @@ Follow these guides in order:
 ---
 
 # macOS Install Guide
-More details to come.
+
+
+## Prerequisites
+
+- macOS on Apple Silicon (M1 / M2 / M3 / M4)
+- 16 GB RAM minimum (6 cEOS nodes × ~1.5 GB each)
+- 20 GB free disk space
+- An [Arista support account](https://www.arista.com/en/user-registration) to download cEOS
+
+
+
+## Setup Guide
+
+Follow these guides in order:
+
+1. [Install OrbStack and Docker](docs/01-mac-orbstack-docker.md)
+2. [Install ContainerLab](docs/02-containerlab-install.md)
+3. [Download and import the cEOS 4.35.4M image (ARM)](docs/03-ceos-image.md)
+4. [Install the VSCode ContainerLab extension](docs/04-vscode-extension.md)
+5. [Clone this repo and run the lab](docs/05-running-the-lab.md)
 
 Hi James!
 
@@ -97,7 +116,7 @@ Hi James!
 ## Quick Start (after setup)
 
 ```bash
-# In your WSL2 Ubuntu terminal
+# In your Ubuntu terminal (WSL2 on Windows, or OrbStack on macOS)
 git clone https://github.com/williamtgoss/arista-ceos-leaf-spine-lab.git arista-leaf-spine
 cd arista-leaf-spine
 
@@ -131,6 +150,7 @@ sudo containerlab destroy -t lab.clab.yaml
 │   └── host2/startup.sh
 └── docs/
     ├── 01-wsl-docker.md
+    ├── 01-mac-orbstack-docker.md
     ├── 02-containerlab-install.md
     ├── 03-ceos-image.md
     ├── 04-vscode-extension.md

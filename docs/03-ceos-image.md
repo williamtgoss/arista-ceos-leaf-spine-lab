@@ -37,6 +37,19 @@ Arista provides vEOS (virtualized) and cEOS (containerized) images to non-custom
 
 ### 2.2 macOS Instructions
 
+1. Log in at **https://www.arista.com/en/support/software-download**
+2. In the left navigation, select **EOS** → **Active Releases** → **4.35** → **EOS-4.35.4M**
+3. Under the **cEOS-lab** section, download the **ARM64** image:
+
+   ```
+   cEOSarm-lab-4.35.4M.tar.xz
+   ```
+
+   > **Important:** Apple Silicon Macs require the ARM-based image (`cEOSarm`), not the standard `cEOS-lab` image. Downloading the wrong image will result in containers that fail to start.
+
+  **Save the file to a location you can easily find later, such as your Downloads folder.**
+
+> **File size:** approximately 600–800 MB. Download time will depend on your connection speed.
 
 ---
 
@@ -59,8 +72,20 @@ The import will take 1–3 minutes. When complete, you will see a SHA256 digest 
 
 ### 3.2 macOS Instructions
 
+You can import the image directly from its macOS path in your OrbStack Ubuntu VM — no need to copy the file into the VM.
 
+Open your **Ubuntu terminal** (via `orb shell ubuntu` or the VS Code Remote-SSH terminal) and run:
 
+```
+docker import /mnt/mac/Users/<your-mac-username>/Downloads/cEOSarm-lab-4.35.4M.tar.xz ceos:4.35.4M
+```
+
+Explanation:
+- `/mnt/mac/` is how the OrbStack Ubuntu VM accesses the macOS filesystem (similar to WSL2's `/mnt/c/`)
+- Replace `<your-mac-username>` with your macOS username
+- `ceos:4.35.4M` is the Docker image name and tag ContainerLab expects
+
+The import will take 1–3 minutes. When complete, you will see a SHA256 digest printed.
 
 ---
 
