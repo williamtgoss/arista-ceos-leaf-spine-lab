@@ -1,5 +1,9 @@
 name: arista-leaf-spine
 
+mgmt:
+  network: clab-mgmt
+  ipv4-subnet: 172.20.20.0/24
+
 topology:
   defaults:
     kind: arista_ceos
@@ -10,38 +14,46 @@ topology:
     spine1:
       kind: arista_ceos
       startup-config: configs/spine1/startup-config
+      mgmt-ipv4: 172.20.20.10
 
     spine2:
       kind: arista_ceos
       startup-config: configs/spine2/startup-config
+      mgmt-ipv4: 172.20.20.11
 
     # ----- Leaf layer -----
     leaf1a:
       kind: arista_ceos
       startup-config: configs/leaf1a/startup-config
+      mgmt-ipv4: 172.20.20.12
 
     leaf1b:
       kind: arista_ceos
       startup-config: configs/leaf1b/startup-config
+      mgmt-ipv4: 172.20.20.13
 
     leaf2a:
       kind: arista_ceos
       startup-config: configs/leaf2a/startup-config
+      mgmt-ipv4: 172.20.20.14
 
     leaf2b:
       kind: arista_ceos
       startup-config: configs/leaf2b/startup-config
+      mgmt-ipv4: 172.20.20.15
 
     # ----- Linux hosts -----
     host1:
       kind: linux
       image: alpine:latest
       startup-config: configs/host1/startup.sh
+      mgmt-ipv4: 172.20.20.20
 
     host2:
       kind: linux
       image: alpine:latest
       startup-config: configs/host2/startup.sh
+      mgmt-ipv4: 172.20.20.21
 
   links:
     # Spine1 uplinks (Ethernet1–4 on spine1)

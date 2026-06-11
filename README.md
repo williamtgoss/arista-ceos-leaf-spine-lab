@@ -59,6 +59,20 @@ Individual device configuration "startup-config" files can be found in the `conf
 |----------|----------|
 | admin    | Arista123! |
 
+### Docker Management Network (172.20.20.0/24)
+
+| Device | Management IP  |
+|--------|----------------|
+| spine1 | 172.20.20.10   |
+| spine2 | 172.20.20.11   |
+| leaf1a | 172.20.20.12   |
+| leaf1b | 172.20.20.13   |
+| leaf2a | 172.20.20.14   |
+| leaf2b | 172.20.20.15   |
+| host1  | 172.20.20.20   |
+| host2  | 172.20.20.21   |
+
+> SSH to any node: `ssh admin@<management-ip>` — Password: `Arista123!`
 
 ---
 # Windows Install Guide
