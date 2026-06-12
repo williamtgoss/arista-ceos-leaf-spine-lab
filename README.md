@@ -123,8 +123,6 @@ Follow these guides in order:
 5. [Clone this repo and run the lab](docs/05-running-the-lab.md)
 6. [Customizing Your Lab](docs/06-customizing-your-lab.md)
 
-Hi James!
-
 
 ---
 
