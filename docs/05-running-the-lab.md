@@ -242,3 +242,7 @@ sudo containerlab destroy -t lab.clab.yaml --cleanup
 | MLAG state shows `Inactive` | Ensure Port-Channel100 is up on both peers; check Vlan4094 SVI is up with `no autostate` |
 | `docker exec` returns "No such container" | Lab isn't deployed; run `sudo containerlab deploy -t lab.clab.yaml` |
 | Out of memory — containers crash | Close other applications; 16 GB RAM is the minimum for this 6-node lab |
+
+---
+
+Next: [Customizing Your Lab](06-customizing-your-lab.md)

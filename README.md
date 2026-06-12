@@ -96,6 +96,7 @@ Follow these guides in order:
 3. [Download and import the cEOS 4.35.4M image](docs/03-ceos-image.md)
 4. [Install the VSCode ContainerLab extension](docs/04-vscode-extension.md)
 5. [Clone this repo and run the lab](docs/05-running-the-lab.md)
+6. [Customizing Your Lab](docs/06-customizing-your-lab.md)
 
 ---
 
@@ -120,6 +121,7 @@ Follow these guides in order:
 3. [Download and import the cEOS 4.35.4M image (ARM)](docs/03-ceos-image.md)
 4. [Install the VSCode ContainerLab extension](docs/04-vscode-extension.md)
 5. [Clone this repo and run the lab](docs/05-running-the-lab.md)
+6. [Customizing Your Lab](docs/06-customizing-your-lab.md)
 
 Hi James!
 
